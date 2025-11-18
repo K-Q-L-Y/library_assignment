@@ -3,6 +3,8 @@
 
 using namespace std;
 
+// node class
+// allows variable data type
 template <typename T>
 class Node {
 	public:
@@ -11,37 +13,24 @@ class Node {
 		Node(const T &data) : data(data), next(nullptr) {}
 };
 
+// linkedlist class
 template <typename T>
 class Lst {
 	private:
 		Node<T> *head;
+		int size;
 	public:
-		Lst() : head(nullptr) {}
-		~Lst() {
-			// clear();
-		}
+		Lst();
+		~Lst();
 
-		void add_back(const T& data) {
-			Node<T> *new_node = new Node<T>(data);
-			
-			if (!head) {
-				head = new_node;
-				return;
-			}
-			Node<T> *tmp = head;
-			while (tmp->next)
-				tmp = tmp->next;
-			tmp->next = new_node;
-		}
-
-		void print() const {
-			Node<T> *tmp = head;
-			while (tmp) {
-				cout << tmp->data << "\n";
-				tmp = tmp->next;
-			}
-			cout << endl;
-		}
+		void add_front(const T& data);
+		void add_back(const T& data);
+		void add_at(int n, const T& data);
+		void print() const;
+		void remove_front();
+		void remove_back();
+		void clear();
 };
 
+#include "lst_utils.tpp"
 #endif
