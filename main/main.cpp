@@ -9,11 +9,11 @@ using namespace std;
 int main()
 {
 	string name = "Harry Potter";
-	int id = 12346;
+	int id = 1;
 	Book *book1 = new Book(name, id);
 
 	name = "Percy Jackson";
-	id = 98765;
+	id = 2;
 	Book *book2 = new Book(name, id);
 	
 	// Person person("Harry", "harry@gmail.com", 654654);
@@ -26,7 +26,7 @@ int main()
 	head.add_front(*book1);
 	head.add_at(3, *book2);
 
-	head.remove_back();
-	head.remove_front();
+	head.remove_at(2);
+	head.remove_at(2);
 	head.print();
 }

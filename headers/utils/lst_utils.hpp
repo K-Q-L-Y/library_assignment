@@ -26,9 +26,10 @@ class Lst {
 		void add_front(const T& data);
 		void add_back(const T& data);
 		void add_at(int n, const T& data);
-		void print() const;
 		void remove_front();
 		void remove_back();
+		void remove_at(int n);
+		void print() const;
 		void clear();
 };
 

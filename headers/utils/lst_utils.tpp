@@ -61,15 +61,6 @@ void Lst<T>::add_at(int n, const T& data) {
 	tmp->next = new_node;
 }
 
-// prints the linkedlist
-template <typename T>
-void Lst<T>::print() const {
-	Node<T> *tmp = head;
-	while (tmp) {
-		cout << tmp->data << "\n";
-		tmp = tmp->next;
-	}
-}
 
 // removes the first element
 template <typename T>
@@ -87,10 +78,26 @@ void Lst<T>::remove_back() {
 	if (!head) return;
 	Node<T> *tmp = head;
 	while (tmp->next->next)
-		tmp = tmp->next;
+	tmp = tmp->next;
 	delete tmp->next;
 	tmp->next = nullptr;
 	size--;
+}
+
+// removes the nth element
+template <typename T>
+void Lst<T>::remove_at(int n) {
+	if (!head || n >= size) return;
+	if (n == 0) return (remove_front());
+	if (n == size - 1) return (remove_back());
+
+	Node<T> *tmp = head;
+
+	while (--n)
+		tmp = tmp->next;
+	Node<T> *next = tmp->next->next;
+	delete tmp->next;
+	tmp->next = next;
 }
 
 // clears the linkedlist
@@ -105,4 +112,14 @@ void Lst<T>::clear() {
 	}
 	head = nullptr;
 	size = 0;
+}
+
+// prints the linkedlist
+template <typename T>
+void Lst<T>::print() const {
+	Node<T> *tmp = head;
+	while (tmp) {
+		cout << tmp->data << "\n";
+		tmp = tmp->next;
+	}
 }
