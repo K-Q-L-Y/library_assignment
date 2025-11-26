@@ -40,8 +40,8 @@ ostream& operator<<(ostream &os, const Book b) {
 }
 
 bool Book::operator==(const Book &other) {
-	// check ID in case name dupe
-	if (this->id != other.id)
+	// TODO: add author and genre
+	if (this->name != other.name)
 		return false;
 	return true;
 }

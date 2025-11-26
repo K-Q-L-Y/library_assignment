@@ -168,6 +168,18 @@ int Lst<T>::find(const T& data) const {
 	return -1;
 }
 
+template <typename T>
+vector<int> Lst<T>::find_all(const T& data) const {
+	Node<T> *cur = head;
+	vector<int> v;
+	for (int i = 0; i < size; ++i) {
+		if (cur->data == data)
+			v.push_back(i);
+		cur = cur->next;
+	}
+	return v;
+}
+
 // finds if data exist
 template <typename T>
 bool Lst<T>::contains(const T& data) const {

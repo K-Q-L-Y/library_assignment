@@ -31,3 +31,34 @@ void Library::remove_book(Book &book) {
 	}
 	throw runtime_error("Book does not exist");
 }
+
+void Library::borrow_book(Book &book) {
+	vector<int> v = books.find_all(book);
+	bool available = false;
+	int book_index;
+	for (const int &idx : v) {
+		if (books.get(idx).is_available()) {
+			available = true;
+			book_index = idx;
+			break;
+		}
+	}
+	if (!available)
+		throw runtime_error("Book currently not available");
+
+	// ok to borrow book
+	while (true) {
+		string input;
+		cout << "Confirm borrow book: \"" << book.get_name() << "\"? [y/n] ";
+		getline(cin, input);
+		if (input == "n")
+			return;
+		if (input == "y")
+			break;
+	}
+	book.set_available(false);
+	Date today;
+	book.set_deadline(today + 14);
+	// change availability of book in library
+	books.set(book_index, book);
+}

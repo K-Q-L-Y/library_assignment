@@ -1,6 +1,7 @@
 #ifndef LIST_UTILS_HPP
 #define LIST_UTILS_HPP
 
+#include <vector>
 using namespace std;
 
 // node class
@@ -37,6 +38,7 @@ class Lst {
 		int get_size() const;
 		T get(int index) const;
 		int find(const T& data) const;
+		vector<int> find_all(const T& data) const;
 		bool contains(const T& data) const;
 
 		// setter
