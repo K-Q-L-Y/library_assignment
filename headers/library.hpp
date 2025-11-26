@@ -2,13 +2,11 @@
 #define LIBRARY_HPP
 
 #include <vector>
-#include "book.hpp"
 #include "person.hpp"
-#include "lst_utils.hpp"
 
 class Library {
 	public:
-		Library();
+		Library() {};
 
 		// manage users
 		void add_user(Person &user);
@@ -21,13 +19,28 @@ class Library {
 		// services
 		void borrow_book(Book &book);
 		void return_book(Book &book);
-		Lst<Book> search(string query);
+		Lst<Book> search(string query); // title, author, genre
+	
+	
+		void print_books() {
+			books.print();
+		}
+
+		void print_users() {
+			users.print();
+		}
+
+		bool has_book(const Book &book) {
+			return books.contains(book);
+		}
+
+		bool has_user(const Person &p) {
+			return users.contains(p);
+		}
 	private:
 		Lst<Book> books;
-		int book_count;
-
 		Lst<Person> users;
-		int user_count;
+		// Lst <Record> records;
 };
 
 #endif

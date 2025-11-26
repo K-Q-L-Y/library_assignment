@@ -8,26 +8,26 @@ Person::Person(string name, string email, string id) :
 
 } 
 
-void Person::borrow_book(Library& lib, Book& book) {
+void Person::borrow_book(Library &lib, Book& book) {
 	throw runtime_error("Permission denied: cannot borrow book.");
 
 }
 
-void Person::return_book(Library& lib, Book &book) {
+void Person::return_book(Library &lib, Book &book) {
 	throw runtime_error("Permission denied: cannot return book.");
 
 }
 
-Lst<Book> Person::search_book(Library& lib, string query) {
+Lst<Book> Person::search_book(Library &lib, string query) {
 	throw runtime_error("Permission denied: cannot search book.");
 
 }
 
-void Person::add_book(Library& lib, Book& book) {
+void Person::add_book(Library &lib, Book& book) {
 	throw runtime_error("Permission denied: cannot add book.");
 }
 
-void Person::remove_book(Library& lib, Book &book) {
+void Person::remove_book(Library &lib, Book &book) {
 	throw runtime_error("Permission denied: cannot remove book.");
 }
 
@@ -47,4 +47,10 @@ void Person::print() {
 	cout << "Name: " << get_name() << endl;
 	cout << "Email: " << get_email() << endl;
 	cout << "ID: " << get_id() << endl;
+}
+
+bool Person::operator==(const Person &other) {
+	if (this->id != other.id)
+		return false;
+	return true;
 }

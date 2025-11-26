@@ -1,8 +1,7 @@
 #include <iostream>
 #include "date.hpp"
-#include "book.hpp"
-#include "person.hpp"
-#include "lst_utils.hpp"
+#include "library.hpp"
+#include "student.hpp"
 
 using namespace std;
 
@@ -24,21 +23,17 @@ int main()
 	id = 4;
 	Book book4(name, id);
 
-	// Person person("Harry", "harry@gmail.com", 654654);
-	// person.print();
-	// person.borrow(*book1);
+	Person *p = new Student("Harry", "harry@gmail.com", "S1234");
+	Library lib;
 
-	Lst<Book> head;
-	head.add_back(book1);
-	head.add_back(book2);
-	head.add_front(book3);
-	head.add_at(3, book4);
-	head.print();
+	lib.add_book(book1);
+	lib.add_user(*p);
+	
+	p->borrow_book(lib, book1);
 
+	p->show_books();
 
-	head.set(2, book3);
-	head.print();
-	head.clear();
-	head.print();
+	lib.print_books();
+	
 	cout << "END" << endl;
 }

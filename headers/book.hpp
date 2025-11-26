@@ -12,6 +12,7 @@ class Book {
 		Date get_deadline() const;
 		void set_available(bool available);
 		void set_deadline(Date deadline);
+		bool operator==(const Book &other);
 		friend ostream& operator<<(ostream &os, const Book b);
 	private:
 		string name;
