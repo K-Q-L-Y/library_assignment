@@ -3,22 +3,38 @@
 
 #include <iostream>
 #include "book.hpp"
+#include "library.hpp"
 
 using namespace std;
 
 class Person {
 	public:
-		Person(string name, string email, int id);
+		enum class Role {
+			Librarian,
+			Student,
+			Guest
+		};
+
+		Person(string name, string email, string id);
+		virtual ~Person() {}
+
 		string get_name() const;
+		string get_id() const;
 		string get_email() const;
-		int get_id() const;
-		void borrow(Book &book);
-		void search(Book &book);
-		void print();
-	private:
+
+		virtual void borrow_book(Library& lib, Book &book);
+		virtual void return_book(Library& lib, Book &book);
+		virtual Lst<Book> search_book(Library& lib, string query);
+		
+		virtual void add_book(Library& lib, Book &book);
+		virtual void remove_book(Library& lib, Book &book);
+
+		virtual void print();
+	protected:
 		string name;
 		string email; // pls dont regex
-		int id;
+		string id;
+		Role role;
 };
 
 #endif
