@@ -5,9 +5,9 @@
 
 class Book {
 	public:
-		Book(string name, int id);
+		Book(string name, string id);
 		string get_name() const;
-		int get_id() const;
+		string get_id() const;
 		bool is_available() const;
 		Date get_deadline() const;
 		void set_available(bool available);
@@ -16,7 +16,7 @@ class Book {
 		friend ostream& operator<<(ostream &os, const Book b);
 	private:
 		string name;
-		int id;
+		string id;
 		bool available;
 		Date deadline;
 };

@@ -13,15 +13,31 @@ class Library {
 		void remove_user(Person &user);
 		
 		// manage books
-		void add_book(Book &book);
+		void add_book(Book book);
 		void remove_book(Book &book);
 
 		// services
 		void borrow_book(Book &book);
-		void return_book(Book &book);
-		Lst<Book> search(string query); // title, author, genre
+		// void return_book(Book &book);
+		Lst<Book> search_book(string query); // title, author, genre
 	
 	
+		Lst<Book> get_books() {
+			return books;
+		}
+
+		Lst<Person> get_users() {
+			return users;
+		}
+
+		int get_books_size() {
+			return books.get_size();
+		}
+
+		int get_users_size() {
+			return users.get_size();
+		}
+
 		void print_books() {
 			books.print();
 		}

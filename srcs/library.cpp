@@ -1,4 +1,5 @@
 #include "library.hpp"
+#include "utils.hpp"
 
 void Library::add_user(Person &user) {
 	users.add_back(user);
@@ -16,7 +17,7 @@ void Library::remove_user(Person &user) {
 	throw runtime_error("User does not exist");
 }
 
-void Library::add_book(Book &book) {
+void Library::add_book(Book book) {
 	books.add_back(book);
 }
 
@@ -46,19 +47,18 @@ void Library::borrow_book(Book &book) {
 	if (!available)
 		throw runtime_error("Book currently not available");
 
-	// ok to borrow book
-	while (true) {
-		string input;
-		cout << "Confirm borrow book: \"" << book.get_name() << "\"? [y/n] ";
-		getline(cin, input);
-		if (input == "n")
-			return;
-		if (input == "y")
-			break;
-	}
 	book.set_available(false);
 	Date today;
 	book.set_deadline(today + 14);
 	// change availability of book in library
 	books.set(book_index, book);
+}
+
+Lst<Book> Library::search_book(string query) {
+	Lst<Book> ret;
+	for (int i = 0; i < books.get_size(); ++i) {
+		if (startswith(books.get(i).get_name(), query))
+			ret.add_back(books.get(i));
+	}
+	return ret;
 }

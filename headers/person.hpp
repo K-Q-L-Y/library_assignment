@@ -35,7 +35,7 @@ class Person {
 		virtual void print();
 		bool operator==(const Person &other);
 		friend ostream& operator<<(ostream &os, Person &p) {
-			os << "----------\nName: " << p.name << "\nEmail: " << p.email
+			os << "Name: " << p.name << "\nEmail: " << p.email
 			<< "\nID: " << p.id << endl;
 			return os;
 		};

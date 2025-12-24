@@ -2,6 +2,15 @@ template <typename T>
 Lst<T>::Lst() : head(nullptr), size(0) {}
 
 template <typename T>
+Lst<T>::Lst(const Lst& other) : head(nullptr), size(0) {
+    Node<T>* cur = other.head;
+    while (cur) {
+        add_back(cur->data);
+        cur = cur->next;
+    }
+}
+
+template <typename T>
 Lst<T>::~Lst() {
 	cout << "Deleting linkedlist... ";
 	clear();
@@ -201,4 +210,19 @@ void Lst<T>::set(int index, const T& data) {
 	for (int i = 0; i < index; ++i)
 		cur = cur->next;
 	cur->data = data;
+}
+
+template <typename T>
+Lst<T>& Lst<T>::operator=(const Lst& other) {
+    if (this == &other)
+        return *this;
+    clear();
+
+    Node<T>* cur = other.head;
+    while (cur) {
+        add_back(cur->data);
+        cur = cur->next;
+    }
+
+    return *this;
 }

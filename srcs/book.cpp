@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Book::Book(string name, int id) : name(name), id(id) {
+Book::Book(string name, string id) : name(name), id(id) {
 	Date today;
 	this->set_available(true);
 	this->set_deadline(today);
@@ -14,7 +14,7 @@ string Book::get_name() const {
 	return name;
 }
 
-int Book::get_id() const {
+string Book::get_id() const {
 	return id;
 }
 
